@@ -6,7 +6,7 @@ export default function Home() {
     <div className="w-screen h-screen bg-blue-950/90 flex justify-center items-center text-white">
       <div className="w-full max-w-[600px] mx-auto space-y-2">
         <h1 className="text-6xl">
-          DailyVibeTracker - Get your vibes checked.
+          <span className="font-semibold text-yellow-100">DailyVibeTracker</span> - Get your vibes checked.
         </h1>
         <p className="text-2xl text-white/65">Best app to keep track of your daily vibes. </p>
         <div>
