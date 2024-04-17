@@ -19,6 +19,15 @@ const createNewUser = async () => {
                 clerkId: user.id,
                 email: user?.emailAddresses[0]?.emailAddress
             }
+        }).catch(async () => {
+            await prisma.user.update({
+                where: {
+                    email: user?.emailAddresses[0]?.emailAddress
+                },
+                data: {
+                    clerkId: user.id
+                }
+            })
         })
     }
     redirect("/journal")

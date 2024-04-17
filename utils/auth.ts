@@ -4,12 +4,12 @@ import { prisma } from "./db";
 export const getUserByClerkId = async () => {
   const { userId } = await auth();
   const dbUser = await prisma.user
-    .findUniqueOrThrow({
+    .findUnique({
       where: {
-        clerkId: userId!,
+        clerkId: userId as string,
       },
     })
-    .catch(() => {
+    .catch((err) => {
       return null;
     });
   return dbUser;
