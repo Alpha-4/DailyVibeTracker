@@ -30,6 +30,8 @@ model JournelEntry {
   userId    String?
   user      User?     @relation(fields: [userId], references: [id])
   analysis  Analysis?
+
+  @@unique([id, userId])
 }
 
 model Analysis {
