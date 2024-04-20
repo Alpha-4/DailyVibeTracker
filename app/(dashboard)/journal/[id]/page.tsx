@@ -17,7 +17,7 @@ const getEntry = async (id: string) => {
         }
     })
 
-    getSentiment("give me a java code with hello world");
+    getSentiment("give me a java code with hello world controller");
     return entry
 }
 const EntryPage = async ({params}: {params: {id: string}}) => {
