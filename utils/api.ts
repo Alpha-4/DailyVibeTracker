@@ -15,10 +15,11 @@ export const updateEntry = async (id: string, content: string) => {
   }
 };
 
-export const createNewEntry = async () => {
+export const createNewEntry = async (content: string) => {
   const res = await fetch(
     new Request(createUrl("/api/journal"), {
       method: "POST",
+      body: JSON.stringify({ content }),
     })
   );
   if (res.status === 200) {

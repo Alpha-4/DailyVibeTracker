@@ -1,3 +1,4 @@
+import { getSentiment } from "@/utils/ai";
 import { getUserByClerkId } from "@/utils/auth";
 import { prisma } from "@/utils/db";
 import { NextRequest, NextResponse } from "next/server";
@@ -8,7 +9,7 @@ export const PATCH = async (
 ) => {
   const { content } = await req.json();
   const user = await getUserByClerkId();
-  const res = await prisma.journelEntry
+  const updatedEntry = await prisma.journelEntry
     .update({
       where: {
         id: params.id,
@@ -22,5 +23,21 @@ export const PATCH = async (
       return NextResponse.json({ data: null, status: 500 });
     });
 
-  return NextResponse.json({ data: res, status: 200 });
+  const analysis = await getSentiment(content);
+  const savedAnalysis = await prisma.analysis.upsert({
+    where: {
+      entryId: params.id,
+    },
+    update: { ...analysis },
+    create: {
+      entryId: params.id,
+      //userId: user?.id,
+      ...analysis,
+    },
+  });
+
+  return NextResponse.json({
+    data: { ...updatedEntry, analysis: savedAnalysis },
+    status: 200,
+  });
 };
