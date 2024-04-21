@@ -1,7 +1,7 @@
 import { OpenAI } from "@langchain/openai";
 import { StructuredOutputParser } from "langchain/output_parsers";
 import { z } from "zod";
-import { PromptTemplate } from "langchain/prompts";
+import { PromptTemplate } from "@langchain/core/prompts";
 
 /*
 Reference::
@@ -12,14 +12,20 @@ const parser = StructuredOutputParser.fromZodSchema(
   z.object({
     mood: z
       .string()
-      .describe("the mood of the person who wrote the journal entry."),
+      .describe(
+        "the mood of the person who wrote the journal entry. Must represent one word mood or feeling."
+      ),
     summary: z.string().describe("quick summary of the entire journal entry."),
     negative: z
       .boolean()
       .describe(
         "is the journal entry negative? (i.e. does it contain negative emotions?)."
       ),
-    subject: z.string().describe("the subject of the journal entry."),
+    subject: z
+      .string()
+      .describe(
+        "the subject of the journal entry. It must accurately fit as the title for the entry."
+      ),
     sentimentScore: z
       .number()
       .describe(
@@ -47,7 +53,6 @@ const getPrompt = async (content: string) => {
     entry: content,
   });
 
-  console.log(input);
   return input;
 };
 
@@ -58,5 +63,12 @@ export const getSentiment = async (prompt: string) => {
     modelName: "gpt-3.5-turbo",
   });
   const res = await model.invoke(input);
-  console.log("AI>>>" + res);
+
+  try {
+    return parser.parse(res);
+  } catch (e) {
+    throw e;
+  }
 };
+
+export type analysisSchema = z.infer<typeof parser.schema>;

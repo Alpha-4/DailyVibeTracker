@@ -1,5 +1,4 @@
 import Editor from '@/components/Editor'
-import {getSentiment} from '@/utils/ai';
 import {getUserByClerkId} from '@/utils/auth';
 import {prisma} from '@/utils/db';
 
@@ -17,7 +16,6 @@ const getEntry = async (id: string) => {
         }
     })
 
-    getSentiment("give me a java code with hello world controller");
     return entry
 }
 const EntryPage = async ({params}: {params: {id: string}}) => {

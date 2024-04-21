@@ -42,8 +42,10 @@ model Analysis {
   entryId String       @unique
   entry   JournelEntry @relation(fields: [entryId], references: [id])
 
-  mood     String
-  summary  String  @db.Text
-  color    String
-  negative Boolean
+  mood           String
+  summary        String  @db.Text
+  color          String
+  negative       Boolean
+  subject        String  @db.Text
+  sentimentScore Float
 }
