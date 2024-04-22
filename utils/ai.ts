@@ -2,6 +2,10 @@ import { OpenAI } from "@langchain/openai";
 import { StructuredOutputParser } from "langchain/output_parsers";
 import { z } from "zod";
 import { PromptTemplate } from "@langchain/core/prompts";
+import { loadQARefineChain } from "langchain/chains";
+import { MemoryVectorStore } from "langchain/vectorstores/memory";
+import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { Document } from "@langchain/core/documents";
 
 /*
 Reference::
@@ -69,6 +73,27 @@ export const getSentiment = async (prompt: string) => {
   } catch (e) {
     throw e;
   }
+};
+
+export const qa = async (question: string, entries: any) => {
+  const docs = entries.map(
+    (entry: any) =>
+      new Document({
+        pageContent: entry.content,
+        metadata: { source: entry.id, date: entry.createdAt },
+      })
+  );
+  const model = new OpenAI({ temperature: 0, modelName: "gpt-3.5-turbo" });
+  const chain = loadQARefineChain(model);
+  const embeddings = new OpenAIEmbeddings();
+  const store = await MemoryVectorStore.fromDocuments(docs, embeddings);
+  const relevantDocs = await store.similaritySearch(question);
+  const res = await chain.call({
+    input_documents: relevantDocs,
+    question,
+  });
+
+  return res.output_text;
 };
 
 export type analysisSchema = z.infer<typeof parser.schema>;
