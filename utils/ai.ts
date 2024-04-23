@@ -1,10 +1,9 @@
-import { OpenAI } from "@langchain/openai";
+import { OpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import { StructuredOutputParser } from "langchain/output_parsers";
 import { z } from "zod";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { loadQARefineChain } from "langchain/chains";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { Document } from "@langchain/core/documents";
 
 /*
@@ -19,7 +18,11 @@ const parser = StructuredOutputParser.fromZodSchema(
       .describe(
         "the mood of the person who wrote the journal entry. Must represent one word mood or feeling."
       ),
-    summary: z.string().describe("quick summary of the entire journal entry."),
+    summary: z
+      .string()
+      .describe(
+        "quick summary of the entire journal entry. Not more than 50 words. should always be shorter than input entry."
+      ),
     negative: z
       .boolean()
       .describe(

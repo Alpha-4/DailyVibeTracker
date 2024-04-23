@@ -5,7 +5,6 @@ import {redirect} from "next/navigation";
 
 
 const createNewUser = async () => {
-
     const user: User = (await currentUser())!;
     const dbUser = await prisma.user.findUnique({
         where: {

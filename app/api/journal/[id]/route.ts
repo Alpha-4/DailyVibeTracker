@@ -8,7 +8,7 @@ export const PATCH = async (
   { params }: { params: { id: string } }
 ) => {
   const { content } = await req.json();
-  const user = await getUserByClerkId();
+  const user = (await getUserByClerkId())!;
   const updatedEntry = await prisma.journelEntry
     .update({
       where: {
@@ -31,7 +31,7 @@ export const PATCH = async (
     update: { ...analysis },
     create: {
       entryId: params.id,
-      //userId: user?.id,
+      userId: user.id,
       ...analysis,
     },
   });

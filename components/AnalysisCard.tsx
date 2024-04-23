@@ -35,17 +35,17 @@ const AnalysisCard = ({analysis}: {analysis: Analysis}) => {
     }
 
     return (
-        <div className='border-l border-black/10 h-full'>
-            <div className='px-6 py-10' style={{
+        <div className='border-l border-black/10 h-full rounded-lg bg-stone-200/40'>
+            <div className='px-6 py-10 rounded-t-lg' style={{
                 backgroundColor: color ? color : '#0101fe',
             }}>
-                <h2 className='text-3xl'>Analysis</h2>
+                <h2 className='text-3xl font-mono font-semibold'>Analysis</h2>
             </div>
             <div>
                 <ul className='flex flex-col'>
                     {analysisData.map((data) => (
                         <li key={data.name} className='items-center border-y-2 border-black/5 px-2'>
-                            <span className='text-lg font-semibold mx-1'>{data.name}:</span>
+                            <span className='text-lg font-mono font-semibold'>{data.name}:</span>
                             <p className={getClassName(data.name, data.value)}>{data.value}</p>
                         </li>
                     ))}

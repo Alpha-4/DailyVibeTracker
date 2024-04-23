@@ -22,7 +22,7 @@ const Editor = ({entry}: {entry: any}) => {
 
     return (
         <>
-            <div className='w-full h-full col-span-2'>
+            <div className='w-full h-full col-span-2 py-1 px-2'>
                 {isSaving && <p>Saving...</p>}
                 <textarea
                     className='w-full h-full px-8 text-xl'

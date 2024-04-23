@@ -13,23 +13,46 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum JOURNAL_ENTRY_STATUS {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Account {
+  id     String @id @default(uuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+  // stripeCustomerId String @unique
+
+  @@unique([userId])
+}
+
 model User {
-  id           String         @id @default(uuid())
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  clerkId      String         @unique
-  email        String         @unique
+  id   String  @id @default(uuid())
+  name String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  clerkId   String   @unique
+  email     String   @unique
+
+  account      Account?
   journelEntry JournelEntry[]
+  Analyses     Analysis[]
 }
 
 model JournelEntry {
-  id        String    @id @default(uuid())
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  content   String    @db.Text
-  userId    String?
-  user      User?     @relation(fields: [userId], references: [id])
-  analysis  Analysis?
+  id        String               @id @default(uuid())
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
+  content   String               @db.Text
+  status    JOURNAL_ENTRY_STATUS @default(DRAFT)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  analysis Analysis?
 
   @@unique([id, userId])
 }
@@ -42,10 +65,15 @@ model Analysis {
   entryId String       @unique
   entry   JournelEntry @relation(fields: [entryId], references: [id])
 
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
   mood           String
   summary        String  @db.Text
   color          String
   negative       Boolean
   subject        String  @db.Text
   sentimentScore Float
+
+  @@index([userId])
 }
