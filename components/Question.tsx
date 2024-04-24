@@ -36,6 +36,15 @@ const Question = () => {
                 >
                     Ask
                 </button>
+                {answer &&
+                    <button
+                        disabled={loading}
+                        onClick={() => setAnswer(null)}
+                        className="bg-yellow-300 px-4 py-2 rounded-md mx-2 my-2 font-mono font-semibold italic"
+                    >
+                        Clear Answer
+                    </button>
+                }
             </form>
             {loading && <p className='my-2 mx-2 text-green-400'>Loading...</p>}
             {answer && <p className="my-4 text-xl mx-2 text-yellow-800">{answer}</p>}
