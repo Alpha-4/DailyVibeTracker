@@ -26,26 +26,26 @@ const AnalysisCard = ({analysis}: {analysis: Analysis}) => {
     const getClassName = (name: string, value: string) => {
 
         if (name === 'Emotions' && value === 'positive') {
-            return 'text-green-500 text-lg'
+            return 'text-green-500 text-sm md:text-lg'
         }
         else if (name === 'Emotions' && value === 'negative') {
-            return 'text-red-500 text-lg'
+            return 'text-red-500 text-sm md:text-lg'
         }
-        return 'text-lg'
+        return 'text-sm md:text-lg'
     }
 
     return (
         <div className='border-l border-black/10 h-full rounded-lg bg-stone-200/40'>
-            <div className='px-6 py-10 rounded-t-lg' style={{
+            <div className='px-2 py-3 md:px-6 md:py-10 rounded-t-lg' style={{
                 backgroundColor: color ? color : '#0101fe',
             }}>
-                <h2 className='text-3xl font-mono font-semibold'>Analysis</h2>
+                <h2 className='text-lg md:text-3xl font-mono font-semibold'>Analysis</h2>
             </div>
             <div>
                 <ul className='flex flex-col'>
                     {analysisData.map((data) => (
                         <li key={data.name} className='items-center border-y-2 border-black/5 px-2'>
-                            <span className='text-lg font-mono font-semibold'>{data.name}:</span>
+                            <span className='text-base md:text-lg font-mono font-semibold'>{data.name}:</span>
                             <p className={getClassName(data.name, data.value)}>{data.value}</p>
                         </li>
                     ))}
