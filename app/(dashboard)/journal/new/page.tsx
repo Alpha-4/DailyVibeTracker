@@ -1,7 +1,7 @@
 import NewEntryEditor from '@/components/NewEntryEditor'
 
 
-const page = () => {
+const page = async () => {
     return (
         <NewEntryEditor />
     )

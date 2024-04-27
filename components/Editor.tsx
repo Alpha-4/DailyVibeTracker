@@ -21,8 +21,8 @@ const Editor = ({entry}: {entry: any}) => {
     })
 
     return (
-        <>
-            <div className='w-full h-full col-span-1 md:col-span-2 py-1 px-2'>
+        <div className='w-full h-screen outline-none grid grid-cols-2 md:grid-cols-3 p-4 md:p-8'>
+            <div className='w-full full col-span-1 md:col-span-2 py-1 px-2'>
                 {isSaving && <p>Saving...</p>}
                 <textarea
                     className='w-full h-full px-2 md:px-8 text-sm md:text-xl'
@@ -31,7 +31,7 @@ const Editor = ({entry}: {entry: any}) => {
                     autoFocus={true} />
             </div>
             <AnalysisCard analysis={analysis} />
-        </>
+        </div>
     )
 }
 

@@ -24,7 +24,7 @@ const History = async () => {
     return (
         <div className="h-screen px-2 py-3 md:px-6 md:py-8 m-2">
             <div>
-                <h1 className="text-lg md:text-2xl mb-2 font-mono text-stone-500">{`Avg. Sentiment Score: ${average}`}</h1>
+                <h1 className="text-lg md:text-2xl mb-2 text-stone-500">{`Avg. Sentiment Score: ${average}`}</h1>
             </div>
             <div className="h-5/6 max-h-screen w-full">
                 {

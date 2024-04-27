@@ -17,11 +17,11 @@ const NewEntryEditor = () => {
     }
 
     return (
-        <div className='w-full h-full grid grid-cols-3 p-4 md:p-8'>
-            <div className='min-h-80 md:min-h-96 h-full col-span-2'>
-                {isLoading && <h2 className='text-xl text-green-500'>Saving....</h2>}
+        <div className='w-full h-full grid md:grid-cols-4 p-4 md:p-8'>
+            <div className='min-h-80 md:min-h-96 h-full col-span-1 md:col-span-3'>
+                {isLoading && <h2 className='text-lg md:text-xl text-green-500'>Saving....</h2>}
                 <textarea
-                    className='w-full h-full px-8 text-xl py-1'
+                    className='w-full h-full px-8 text-sm md:text-xl py-1'
                     onChange={(e) => setValue(e.target.value)}
                     value={value}
                     placeholder='How was your day?...'
@@ -29,7 +29,7 @@ const NewEntryEditor = () => {
             </div>
             <div>
                 <button
-                    className='mx-4 my-8 px-2 py-2 text-xl rounded-md cursor-pointer bg-gray-400/50 hover:bg-gray-500/50 transition-transform hover:scale-105'
+                    className='m-4 md:mx-12 px-2 text-sm md:text-xl rounded-md cursor-pointer bg-gray-400/50 hover:bg-gray-500/50 transition-transform hover:scale-105'
                     onClick={handleOnClick}
                     disabled={isLoading}>
                     Create New Entry

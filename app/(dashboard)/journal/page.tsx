@@ -27,10 +27,10 @@ const Journal = async () => {
     return (
         <div className="px-2 py-2 md:px-6 md:py-8 bg-zinc-100/50 h-full w-full">
             <h2 className="flex justify-between mb-4 md:mb-8 text-lg md:text-2xl lg:text-3xl text-center">
-                <span className="px-2 py-2 md:px-4 md:py-5 font-mono font-semibold italic text-stone-700">Your Memoirs...</span>
+                <span className="px-2 py-2 md:px-4 md:py-5 font-semibold italic text-stone-700">Your Memoirs...</span>
                 <NewEntryCard />
             </h2>
-            <div className="my-2 md:my-8">
+            <div className="px-2 my-2 md:my-8">
                 <Question />
             </div>
 

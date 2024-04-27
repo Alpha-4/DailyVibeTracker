@@ -31,7 +31,7 @@ const AnalysisCard = ({analysis}: {analysis: Analysis}) => {
         else if (name === 'Emotions' && value === 'negative') {
             return 'text-red-500 text-sm md:text-lg'
         }
-        return 'text-sm md:text-lg'
+        return 'text-sm md:text-lg overflow-hidden'
     }
 
     return (
@@ -39,13 +39,13 @@ const AnalysisCard = ({analysis}: {analysis: Analysis}) => {
             <div className='px-2 py-3 md:px-6 md:py-10 rounded-t-lg' style={{
                 backgroundColor: color ? color : '#0101fe',
             }}>
-                <h2 className='text-lg md:text-3xl font-mono font-semibold'>Analysis</h2>
+                <h2 className='text-lg md:text-3xl font-semibold'>Analysis</h2>
             </div>
             <div>
                 <ul className='flex flex-col'>
                     {analysisData.map((data) => (
                         <li key={data.name} className='items-center border-y-2 border-black/5 px-2'>
-                            <span className='text-base md:text-lg font-mono font-semibold'>{data.name}:</span>
+                            <span className='text-base md:text-lg font-semibold'>{data.name}:</span>
                             <p className={getClassName(data.name, data.value)}>{data.value}</p>
                         </li>
                     ))}

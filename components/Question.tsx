@@ -32,7 +32,7 @@ const Question = () => {
                 <button
                     disabled={loading}
                     type="submit"
-                    className="bg-blue-400 px-4 py-2 rounded-md mx-2 my-2 font-mono font-semibold italic"
+                    className="bg-blue-400 px-4 py-2 rounded-md mx-2 my-2 font-semibold italic"
                 >
                     Ask
                 </button>
@@ -40,7 +40,7 @@ const Question = () => {
                     <button
                         disabled={loading}
                         onClick={() => setAnswer(null)}
-                        className="bg-yellow-300 px-4 py-2 rounded-md mx-2 my-2 font-mono font-semibold italic"
+                        className="bg-yellow-300 px-4 py-2 rounded-md mx-2 my-2 font-semibold italic"
                     >
                         Clear Answer
                     </button>
