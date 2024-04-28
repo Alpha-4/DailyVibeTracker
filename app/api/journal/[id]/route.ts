@@ -41,3 +41,24 @@ export const PATCH = async (
     status: 200,
   });
 };
+
+export const DELETE = async (
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) => {
+  try {
+    const { id } = params;
+    const user = (await getUserByClerkId())!;
+    const deletedEntry = await prisma.journelEntry.delete({
+      where: {
+        id: id,
+        userId: user.id,
+      },
+    });
+  } catch (e) {
+    console.log(e);
+    return NextResponse.json({ data: null, status: 500 });
+  }
+
+  return NextResponse.json({ data: null, status: 200 });
+};

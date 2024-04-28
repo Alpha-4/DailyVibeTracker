@@ -1,9 +1,9 @@
-import {Progress} from '@radix-ui/themes'
+import {Spinner} from '@radix-ui/themes'
 import React from 'react'
 
 const Loading = () => {
     return (
-        <div><Progress />Loading....</div>
+        <div><Spinner />Loading....</div>
     )
 }
 

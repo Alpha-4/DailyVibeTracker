@@ -1,6 +1,6 @@
 "use client"
 import {createNewEntry} from '@/utils/api';
-import {Progress} from '@radix-ui/themes';
+import {Spinner} from '@radix-ui/themes';
 import {useRouter} from 'next/navigation';
 import {useState} from 'react'
 
@@ -20,7 +20,7 @@ const NewEntryEditor = () => {
     return (
         <div className='w-full h-full grid md:grid-cols-4 p-4 md:p-8'>
             <div className='min-h-80 md:min-h-96 h-full col-span-1 md:col-span-3'>
-                {isLoading && <h2 className='text-lg md:text-xl text-green-500'><Progress />Saving....</h2>}
+                {isLoading && <h2 className='text-lg md:text-xl text-green-500'><Spinner />Saving....</h2>}
                 <textarea
                     className='w-full h-full px-8 text-sm md:text-xl py-1'
                     onChange={(e) => setValue(e.target.value)}
