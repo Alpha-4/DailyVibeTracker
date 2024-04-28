@@ -63,7 +63,7 @@ model Analysis {
   updatedAt DateTime @updatedAt
 
   entryId String       @unique
-  entry   JournelEntry @relation(fields: [entryId], references: [id])
+  entry   JournelEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
 
   userId String
   user   User   @relation(fields: [userId], references: [id])

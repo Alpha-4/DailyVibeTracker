@@ -1,8 +1,9 @@
+import {Progress} from '@radix-ui/themes'
 import React from 'react'
 
 const Loading = () => {
     return (
-        <div>Loading....</div>
+        <div><Progress />Loading....</div>
     )
 }
 

@@ -2,6 +2,7 @@
 
 
 import {askQuestion} from '@/utils/api'
+import {Progress} from '@radix-ui/themes'
 import {FormEvent, useState} from 'react'
 
 const Question = () => {
@@ -46,7 +47,7 @@ const Question = () => {
                     </button>
                 }
             </form>
-            {loading && <p className='my-2 mx-2 text-green-400'>Loading...</p>}
+            {loading && <p className='my-2 mx-2 text-green-400'><Progress /> Loading...</p>}
             {answer && <p className="my-4 text-xl mx-2 text-yellow-800">{answer}</p>}
         </div>
     )

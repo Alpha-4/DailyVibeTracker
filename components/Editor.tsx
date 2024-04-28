@@ -3,6 +3,7 @@ import {updateEntry} from '@/utils/api';
 import {useState} from 'react';
 import {useAutosave} from 'react-autosave';
 import AnalysisCard from './AnalysisCard';
+import {Progress} from '@radix-ui/themes';
 
 const Editor = ({entry}: {entry: any}) => {
     const [value, setValue] = useState(entry.content);
@@ -23,7 +24,7 @@ const Editor = ({entry}: {entry: any}) => {
     return (
         <div className='w-full h-screen outline-none grid grid-cols-2 md:grid-cols-3 p-4 md:p-8'>
             <div className='w-full full col-span-1 md:col-span-2 py-1 px-2'>
-                {isSaving && <p>Saving...</p>}
+                {isSaving && <p><Progress /> Saving...</p>}
                 <textarea
                     className='w-full h-full px-2 md:px-8 text-sm md:text-xl'
                     onChange={(e) => setValue(e.target.value)}
