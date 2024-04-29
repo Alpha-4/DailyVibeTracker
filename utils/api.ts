@@ -22,6 +22,7 @@ export const createNewEntry = async (content: string) => {
       body: JSON.stringify({ content }),
     })
   );
+
   if (res.status === 200) {
     const data = await res.json();
     return data.data;
