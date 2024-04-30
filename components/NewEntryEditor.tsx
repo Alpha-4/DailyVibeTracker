@@ -30,7 +30,7 @@ const NewEntryEditor = () => {
             </div>
             <div>
                 <button
-                    className='m-4 md:mx-12 px-2 text-sm md:text-xl rounded-md cursor-pointer bg-gray-400/50 hover:bg-gray-500/50 transition-transform hover:scale-105'
+                    className='m-4 md:mx-12 px-2 py-3 text-sm md:text-xl rounded-md cursor-pointer bg-gray-400/50 hover:bg-gray-500/50 transition-transform hover:scale-105'
                     onClick={handleOnClick}
                     disabled={isLoading}>
                     Create New Entry

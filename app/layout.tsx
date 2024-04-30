@@ -9,7 +9,7 @@ const font = font_style({
 })
 
 export const metadata = {
-  title: 'Daily Vibe Tracker',
+  title: 'DailyMoodTracker',
   description: 'A mood analyzer for your daily life',
 }
 

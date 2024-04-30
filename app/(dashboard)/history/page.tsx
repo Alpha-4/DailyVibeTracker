@@ -35,4 +35,10 @@ const History = async () => {
     )
 }
 
+
+export const metadata = {
+    title: 'Graphical Analysis',
+    description: 'A plot of your mood over time',
+}
+
 export default History

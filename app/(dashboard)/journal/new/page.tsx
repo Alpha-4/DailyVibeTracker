@@ -7,4 +7,9 @@ const page = async () => {
     )
 }
 
+export const metadata = {
+    title: 'Create New Entry',
+    description: 'Create a new journal entry',
+}
+
 export default page

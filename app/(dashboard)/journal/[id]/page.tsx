@@ -27,4 +27,9 @@ const EntryPage = async ({params}: {params: {id: string}}) => {
     )
 }
 
+
+export const metadata = {
+    title: 'Entry Details',
+    description: 'Complete analysis of your entry',
+}
 export default EntryPage

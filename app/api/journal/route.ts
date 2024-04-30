@@ -27,6 +27,6 @@ export const POST = async (req: NextRequest) => {
     console.log(e);
   }
 
-  revalidatePath("/journal");
+  //revalidatePath("/(dashboard)/journal");
   return NextResponse.json({ data: entry, status: 200 });
 };
