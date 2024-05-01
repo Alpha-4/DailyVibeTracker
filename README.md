@@ -1,3 +1,12 @@
+## TODO(For Me)
+Add tests
+
+## Live At
+https://daily-vibe-tracker.vercel.app/
+
+## About
+This is a practice project using OPENAI api that performs sentiment analysis of a journal entry.  
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
