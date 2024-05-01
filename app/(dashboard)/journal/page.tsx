@@ -5,6 +5,8 @@ import Pagination from "@/components/Pagination";
 import Question from "@/components/Question";
 import {getUserByClerkId} from "@/utils/auth";
 import {prisma} from "@/utils/db"
+import {InfoCircledIcon} from "@radix-ui/react-icons";
+import {Callout} from "@radix-ui/themes";
 import Link from "next/link";
 
 
@@ -51,6 +53,7 @@ const Journal = async ({
     const entries = await getEntries(currPage, pageSize);
     return (
         <div className="px-2 py-2 md:px-6 md:py-8 bg-zinc-100/50 h-full w-full">
+
             <h2 className="flex justify-between mb-4 md:mb-8 text-lg md:text-2xl lg:text-3xl text-center">
                 <span className="px-2 py-2 md:px-4 md:py-5 font-semibold italic text-stone-700">Your Memoirs...</span>
                 <NewEntryCard />
@@ -61,7 +64,19 @@ const Journal = async ({
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {
-                    entries.map(entry =>
+                    (!entries || entries.length === 0) && (
+                        <Callout.Root>
+                            <Callout.Icon>
+                                <InfoCircledIcon />
+                            </Callout.Icon>
+                            <Callout.Text color="red">
+                                You don&apos;t have any entries yet. Please click on the &quot;New Entry&quot; button to get started.
+                            </Callout.Text>
+                        </Callout.Root>
+                    )
+                }
+                {
+                    entries && entries.map(entry =>
                     (
                         <Link href={`/journal/${entry.id}`} key={entry.id}>
                             <EntryCard entry={entry} />
@@ -80,6 +95,4 @@ export const metadata = {
     description: 'A list of all your journal entries',
 }
 
-
-export const dynamic = 'force-dynamic'
 export default Journal

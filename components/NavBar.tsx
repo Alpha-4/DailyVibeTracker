@@ -6,7 +6,7 @@ import Link from 'next/link'
 const NavBar = () => {
     const links = [
         {href: '/', label: 'DailyVibeTracker'},
-        {href: '/journal', label: 'Journal'},
+        {href: '/journal?page=1', label: 'Journal'},
         {href: '/history', label: 'History'},
     ]
 

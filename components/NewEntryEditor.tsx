@@ -12,9 +12,9 @@ const NewEntryEditor = () => {
     const handleOnClick = async () => {
         setIsLoading(true)
         const data = await createNewEntry(value)
-        setIsLoading(false)
         if (data && data.id) router.push(`/journal/${data.id}`)
         else router.push(`/journal`)
+        setIsLoading(false)
     }
 
     return (
